@@ -90,8 +90,5 @@ The build context is the set of files that Docker can access to include in the i
 - [cmd](./CMD.md)
 - [django-settings](./DJANGO-SETTINGS.md)
 - [expose](./EXPOSE-PORT.md)
-
-<!-- Extra -->
-
 - [port](./PORT.md)
 - [layer-caching](./LAYER-CACHING.md)
