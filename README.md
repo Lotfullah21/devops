@@ -41,33 +41,32 @@ with the tools it contains, it helps us to:
 
 ```mermaid
 flowchart TB
-  %% =========================
-  %% How a Docker Container Is Built
-  %% =========================
+  %% How a Docker Container Is Built (GitHub-safe)
 
-  DEV[Developer\nwrites code + Dockerfile] --> DF[Dockerfile\n(build instructions)]
+  DEV["Developer<br/>writes code + Dockerfile"] --> DF["Dockerfile<br/>(build instructions)"]
 
-  DF --> DOCKER[Docker Engine\n(docker build)]
-  DOCKER --> BASE[Base Image\n(e.g. python:3.12-slim)]
+  DF --> DOCKER["Docker Engine<br/>(docker build)"]
+  DOCKER --> BASE["Base Image<br/>(e.g. python:3.12-slim)"]
 
-  BASE --> L1[Layer 1\nBase OS + Runtime]
-  L1 --> L2[Layer 2\nInstall Dependencies]
-  L2 --> L3[Layer 3\nCopy Application Code]
+  BASE --> L1["Layer 1<br/>Base OS + Runtime"]
+  L1 --> L2["Layer 2<br/>Install Dependencies"]
+  L2 --> L3["Layer 3<br/>Copy Application Code"]
 
-  L3 --> IMG[(Docker Image)\nRead-only Blueprint]
+  L3 --> IMG[("Docker Image<br/>Read-only Blueprint")]
 
-  IMG -->|docker run| CTR[(Container)]
+  IMG -->|"docker run"| CTR[("Container")]
 
-  CTR --> RW[Writable Layer\n(runtime changes only)]
-  CTR --> APP[Running Application]
+  CTR --> RW["Writable Layer<br/>(runtime changes only)"]
+  CTR --> APP["Running Application"]
 
-  %% Explanations
-  subgraph WHAT[What Each Thing Is]
-    BASE --> B1["Base Image\n• Starting point\n• Provides OS & language runtime"]
-    IMG --> B2["Image\n• Read-only template\n• Built once\n• Can create many containers"]
-    CTR --> B3["Container\n• A running instance of an image\n• Has state\n• Can start/stop/delete"]
-    RW --> B4["Writable Layer\n• Logs, temp files\n• Deleted with container"]
+  subgraph WHAT["What Each Thing Is"]
+    BASE --> B1["Base Image: starting point<br/>Provides OS + language runtime"]
+    IMG --> B2["Image: read-only template<br/>Built once, used many times"]
+    CTR --> B3["Container: running instance of an image<br/>Has state; start/stop/delete"]
+    RW --> B4["Writable Layer: logs/temp/writes<br/>Deleted with container"]
   end
+
+
 ```
 
 # What is Docker?
